@@ -17,3 +17,32 @@ button.addEventListener('click', function() {
         message.style.fontSize = '10px';
     }, 2000);
 });
+
+
+
+const form = document.getElementById('guestbookForm');
+const result = document.getElementById('result');
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const message = document.getElementById('message').value;
+
+    fetch("https://script.google.com/macros/s/AKfycbwcAOjkTwxmnFmdQ0rfqyU7Twi7xZPp3vPdmVWTtLQJCr5acnrT_Md5XKt_7z92Iecm/exec", {
+        method: "POST",
+        body: JSON.stringify({ name, message }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res => res.text())
+    .then(text => {
+        result.innerText = text;
+        form.reset();
+    })
+    .catch(err => {
+        result.innerText = "에러 발생!";
+        console.error(err);
+    });
+});
