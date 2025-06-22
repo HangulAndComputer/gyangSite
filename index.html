@@ -7,6 +7,19 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+        <div class="guestbook">
+            <h1>어쩔티비 방명록</h1>
+            <h2>방명록을 남겨주세요</h2>
+            <form action="https://formspree.io/f/mblyanoj" method="POST">
+                <label for="name">이름:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="message">메시지:</label>
+                <textarea id="messageInput" name="message" required></textarea>
+                <button type="submit">보내기</button>
+            </form>
+
+            <p id="result"></p>
+        </div>
         <div class="parent">
             <h1>어쩔티비</h1>
 
